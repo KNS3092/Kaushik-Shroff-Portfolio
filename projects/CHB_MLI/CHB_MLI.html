@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5-Level Cascaded H-Bridge Multilevel Inverter</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1 class="title">5-Level Cascaded H-Bridge Multilevel Inverter</h1>
+        </div>
+    </header>
+
+    <section class="project-detail">
+        <div class="container">
+            <div class="carousel-box">
+                <div class="carousel">
+                    <button class="prev" onclick="prevSlide()">&#10094;</button>
+                    <div class="carousel-inner">
+                        <img src="circuit.png" class="project-image active">
+                        <img src="waveform.png" class="project-image">
+                        <img src="group.jpeg" class="project-image">
+                        <img src="certificate.jpeg" class="project-image">
+                    </div>
+                    <button class="next" onclick="nextSlide()">&#10095;</button>
+                </div>
+            </div>
+
+            <div class="project-content">
+                <div class="project-description-box">
+                    <p><b>Project Overview:</b> This project focused on the <b>design, implementation, and performance analysis</b> of a <b>5-level Cascaded H-Bridge (CHB) multilevel inverter</b>, a power conversion system that enhances AC waveform quality while reducing harmonic distortion. The system was built using an <b>ATMega328 microcontroller</b> for precise switching control, <b>MOSFET-based H-Bridge cells</b>, and a multi-stage power regulation setup.</p>
+            
+                    <p>A key aspect of the project was the evaluation of <b>Total Harmonic Distortion (THD)</b> under different load conditions, helping to quantify the system’s efficiency. The system was tested with <b>R, RL, and RLC loads</b>, revealing THD values of <b>26.37% (RL load)</b> and <b>22.81% (RLC load)</b>—showing a significant improvement over conventional inverters.</p>
+            
+                    <p>The project serves as a valuable educational tool for power electronics, offering insights into <b>multilevel inverter performance, waveform optimization, and power electronics design</b>. Future improvements aim to <b>reduce THD further, integrate closed-loop feedback control, and implement active power factor correction</b> for enhanced efficiency.</p>
+                </div>
+            
+                <div class="key-takeaways-box">
+                    <h3>Key Takeaways:</h3>
+                    <ul>
+                        <li><b>5-level CHB multilevel inverter</b> successfully implemented with stepped voltage levels of 0V, ±V, ±2V.</li>
+                        <li><b>THD measured at 26.37% (RL load) and 22.81% (RLC load)</b>, demonstrating waveform quality improvements.</li>
+                        <li>Utilized <b>8 MOSFET switches (IRF540N)</b> and <b>2 cascaded H-Bridge cells</b> for multilevel voltage synthesis.</li>
+                        <li><b>ATMega328 microcontroller-based control system</b> designed for precise switching with optimized pulse generation.</li>
+                        <li>Tested across <b>multiple load types (R, RL, RLC)</b>, validating system adaptability and performance.</li>
+                        <li>Identified areas for improvement: <b>further THD reduction, closed-loop feedback control, and power factor correction integration</b>.</li>
+                    </ul>
+                </div>
+            </div>
+         </div>
+    </section>
+
+    <script>
+        let index = 0;
+        function showSlide(n) {
+            let slides = document.querySelectorAll(".project-image");
+            slides.forEach(slide => slide.classList.remove("active"));
+            slides[n].classList.add("active");
+        }
+        function nextSlide() {
+            let slides = document.querySelectorAll(".project-image");
+            index = (index + 1) % slides.length;
+            showSlide(index);
+        }
+        function prevSlide() {
+            let slides = document.querySelectorAll(".project-image");
+            index = (index - 1 + slides.length) % slides.length;
+            showSlide(index);
+        }
+    </script>
+
+    <style>
+        :root {
+            --primary-bg-color: #f4f4f9;
+            --primary-text-color: #333;
+            --white-color: #fff;
+            --gray-color: #ddd;
+            --border-color: #bbb;
+            --button-bg: #000;
+            --button-hover: #000;
+            --text-accent: #0056b3;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: var(--primary-bg-color);
+            color: var(--primary-text-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .title {
+            margin-bottom: 20px;
+            color: var(--text-accent);
+        }
+
+       
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: auto;
+        }
+
+        .project-image {
+            display: none;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .project-image.active {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 50%;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: var(--button-hover);
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .project-description-box, .key-takeaways-box {
+            background-color: var(--white-color);
+            border: 2px solid var(--gray-color);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: justify;
+        }
+
+        .project-description-box p, .key-takeaways-box ul {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .key-takeaways-box h3 {
+            color: var(--text-accent);
+            margin-bottom: 10px;
+        }
+    </style>
+
+</body>
+</html>

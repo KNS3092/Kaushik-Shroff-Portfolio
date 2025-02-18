@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anti-Theft System for Electric Vehicles</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1 class="title">Anti-Theft System for Electric Vehicles</h1>
+        </div>
+    </header>
+
+    <section class="project-detail">
+        <div class="container">
+            <div class="carousel-box">
+                <div class="carousel">
+                    <button class="prev" onclick="prevSlide()">&#10094;</button>
+                    <div class="carousel-inner">
+                        <img src="implementation.jpg" class="project-image active">
+                        <img src="message.jpg" class="project-image">
+                        <img src="location.jpg" class="project-image">
+                    </div>
+                    <button class="next" onclick="nextSlide()">&#10095;</button>
+                </div>
+            </div>
+
+            <div class="project-content">
+                <div class="project-description-box">
+                    <p><b>Project Overview:</b> This project presents a <b>low-cost, real-time vehicle tracking system</b> integrating <b>GPS (Global Positioning System)</b> and <b>GSM (Global System for Mobile Communication)</b> technologies to provide reliable automobile surveillance. 
+                    The system utilizes an <b>ATMega microcontroller</b> to process GPS data and communicate with a <b>GSM modem</b>, enabling real-time location tracking.</p>
+                
+                    <p>A <b>GPS receiver</b> continuously captures geographic coordinates, while the <b>GSM module</b> transmits this data via <b>SMS</b>, providing users with <b>Google Maps links</b> for easy visualization.</p>
+                </div>
+                
+                <div class="key-takeaways-box">
+                    <h3>Key Takeaways:</h3>
+                    <ul>
+                        <li><b>Cost Reduction:</b> Achieved a <b>30-50% cost reduction</b> compared to commercial tracking solutions.</li>
+                        <li><b>Enhanced Security:</b> Real-time tracking <b>minimizes vehicle theft risk</b> and aids <b>fleet management</b>.</li>
+                        <li><b>Scalability & Future Enhancements:</b> Potential for <b>AI-driven route optimization</b>, <b>sensor integration</b> (fuel, speed, temperature), and <b>blockchain-backed data security</b>.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let index = 0;
+        function showSlide(n) {
+            let slides = document.querySelectorAll(".project-image");
+            slides.forEach(slide => slide.classList.remove("active"));
+            slides[n].classList.add("active");
+        }
+        function nextSlide() {
+            let slides = document.querySelectorAll(".project-image");
+            index = (index + 1) % slides.length;
+            showSlide(index);
+        }
+        function prevSlide() {
+            let slides = document.querySelectorAll(".project-image");
+            index = (index - 1 + slides.length) % slides.length;
+            showSlide(index);
+        }
+    </script>
+
+    <style>
+        :root {
+            --primary-bg-color: #f4f4f9;
+            --primary-text-color: #333;
+            --white-color: #fff;
+            --gray-color: #ddd;
+            --border-color: #bbb;
+            --button-bg: #000;
+            --button-hover: #000;
+            --text-accent: #0056b3;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: var(--primary-bg-color);
+            color: var(--primary-text-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .title {
+            margin-bottom: 20px;
+            color: var(--text-accent);
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: auto;
+        }
+
+        .project-image {
+            display: none;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .project-image.active {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            height: auto;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 50%;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: var(--button-hover);
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .project-description-box, .key-takeaways-box {
+            background-color: var(--white-color);
+            border: 2px solid var(--gray-color);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: justify;
+        }
+
+        .project-description-box p, .key-takeaways-box ul {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .key-takeaways-box h3 {
+            color: var(--text-accent);
+            margin-bottom: 10px;
+        }
+    </style>
+
+</body>
+</html>
