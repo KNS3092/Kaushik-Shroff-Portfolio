@@ -524,6 +524,7 @@ h5 {
 
 .publication-item {
   flex: 1 1 calc(33.33% - 20px);
+  max-width: 300px;  
   min-width: 280px;
   position: relative;
   overflow: hidden;
