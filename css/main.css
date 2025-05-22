@@ -429,7 +429,7 @@ h5 {
 .projects-row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 20px;
 }
 
@@ -437,8 +437,9 @@ h5 {
   position: relative;
   overflow: hidden;
   display: block;
-  flex: 1 1 calc(33.33% - 20px); /* Ensures 3 per row */
-  max-width: 100%; /* Adjust width */
+  flex: 1 1 calc(25% - 20px); /* 4 per row on large screens */
+  max-width: 250px;
+  min-width: 220px;
 }
 
 .project-box a {

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Neural Network Accelerator</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="title">Graph Neural Network Accelerator</h1>
+        </div>
+    </header>
+    <section class="project-detail">
+        <div class="container">
+            <div class="carousel-box">
+                <div class="carousel">
+                    <button class="prev" onclick="prevSlide()">&#10094;</button>
+                    <div class="carousel-inner">
+                        <img src="waveform.png" class="project-image active">
+                        <img src="layout.png" class="project-image">
+                    </div>
+                    <button class="next" onclick="nextSlide()">&#10095;</button>
+                </div>
+            </div>
+            
+            <div class="project-content">
+                <div class="project-description-box">
+                    <p><b>Project Overview:</b> This project involved designing a pipelined <b>Graph Neural Network (GNN) accelerator</b> for parallel task scheduling across heterogeneous Arm A53/A57 cores. 
+                        The architecture was implemented in System Verilog, with key functional units including <b>MAC, ReLU, and Aggregation</b> modules. Emphasis was placed on timing optimization, area efficiency, and power reduction through <b>bit-width pruning, modular pipelining, and sign-bit-aware ReLU</b> logic.
+                        
+                        The full <b>frontend-to-backend flow</b> was executed using <b>ModelSim, Design Compiler, Innovus, PrimeTime and Virtuoso</b> with a 7nm standard-cell library. Post-layout simulation and analysis yielded a <b>maximum frequency of 869 MHz</b>, <b>power of 3.07 mW</b>, and an energy-delay-area product (EDAP) of <b>7.91 pJ·ns·mm²</b>. 
+                        Although clock gating reduced power by 38% pre-APR and 5% post-APR, it was rolled back post-APR due to timing violations—highlighting key trade-offs in design-space exploration.</p>                        
+                </div>
+                <div class="key-takeaways-box">
+                    <h3>Key Takeaways:</h3>
+                    <ul>
+                        <li><b>Designed a modular GNN accelerator</b> using Verilog with MAC, ReLU, and Aggregation stages for multi-task scheduling.</li>
+                        <li><b>Achieved 869 MHz</b> post-layout frequency and <b>3.07 mW</b> power on a 7nm node with Design Compiler and Innovus.</li>
+                        <li><b>Optimized energy efficiency</b> with a measured <b>EDAP of 7.91 pJ·ns·mm²</b> using bit-width pruning and RTL-level enhancements.</li>
+                        <li><b>Implemented clock gating</b> for 38% dynamic power savings pre-APR and 5% post-APR.</li>
+                        <li><b>Completed full frontend-to-backend RTL-to-GDSII flow</b>, including post-layout power/timing analysis with PrimeTime.</li>
+                    </ul>                    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        let index = 0;
+        function showSlide(n) {
+            let slides = document.querySelectorAll(".project-image");
+            slides.forEach(slide => slide.classList.remove("active"));
+            slides[n].classList.add("active");
+        }
+        function nextSlide() {
+            let slides = document.querySelectorAll(".project-image");
+            index = (index + 1) % slides.length;
+            showSlide(index);
+        }
+        function prevSlide() {
+            let slides = document.querySelectorAll(".project-image");
+            index = (index - 1 + slides.length) % slides.length;
+            showSlide(index);
+        }
+    </script>
+    
+    <style>
+        :root {
+            --primary-bg-color: #f4f4f9;
+            --primary-text-color: #333;
+            --white-color: #fff;
+            --gray-color: #ddd;
+            --border-color: #bbb;
+            --button-bg: #000;
+            --button-hover: #000;
+            --text-accent: #0056b3;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: var(--primary-bg-color);
+            color: var(--primary-text-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .title {
+            margin-bottom: 20px;
+            color: var(--text-accent);
+        }
+
+ 
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: auto;
+        }
+
+        .project-image {
+            display: none;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .project-image.active {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            height: auto;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 50%;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: var(--button-hover);
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .project-description-box, .key-takeaways-box {
+            background-color: var(--white-color);
+            border: 2px solid var(--gray-color);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: justify;
+        }
+
+        .project-description-box p, .key-takeaways-box ul {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .key-takeaways-box h3 {
+            color: var(--text-accent);
+            margin-bottom: 10px;
+        }
+    </style>
+</body>
+</html>
